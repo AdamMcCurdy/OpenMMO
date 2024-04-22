@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckcmdri54go3p"]
+
+[ext_resource type="Script" path="res://player.cs" id="1_80non"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tp5kj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8y578"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1p4fc"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.1
+metallic_specular = 0.38
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ibjf0"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_80non")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character Mesh" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_tp5kj")
+
+[node name="Sunglasses" type="MeshInstance3D" parent="Pivot/Character Mesh"]
+transform = Transform3D(0.490528, 0, 0, 0, 0.209983, 0, 0, 0, 0.662612, 0.332624, 0.510922, 0)
+mesh = SubResource("BoxMesh_8y578")
+surface_material_override/0 = SubResource("StandardMaterial3D_1p4fc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ibjf0")
